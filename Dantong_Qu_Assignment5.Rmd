@@ -7,7 +7,7 @@ output: html_document
 
 ```{r echo=TRUE, message=FALSE}
 rm(list = ls())
-setwd("~/Desktop/DS400 Data Science Project Management /Assignment 5")
+setwd("~/Desktop/DS400 Data Science Project Management /Assignment 5/Assignment5")
 
 if (!require("jsonlite")) install.packages("jsonlite")
 if (!require("httr")) install.packages("httr")
@@ -94,7 +94,7 @@ venue_data4 <-
              latitude = character(n),
              stringsAsFactors = FALSE)
 
-for (i in 1:pages) {
+for (i in 0:pages-1) {
   get_venue <- GET(url = "https://app.ticketmaster.com/discovery/v2/venues",
                                     query = list(apikey = tm_key,
                                                  locale = "*",
@@ -104,28 +104,28 @@ for (i in 1:pages) {
   venues4 <- fromJSON(content(get_venue, as = "text", encoding = "UTF-8"))[["_embedded"]][["venues"]]
 
   ifelse(is.null(venues4$name),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"name"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"name"] <- venues4$name)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"name"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"name"] <- venues4$name)
   ifelse(is.null(venues4$city$name),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"city"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"city"] <- venues4$city$name)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"city"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"city"] <- venues4$city$name)
   ifelse(is.null(venues4$postalCode),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"postalCode"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"postalCode"] <- venues4$postalCode)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"postalCode"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"postalCode"] <- venues4$postalCode)
   ifelse(is.null(venues4$address$line1),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"address"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"address"] <- venues4$address$line1)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"address"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"address"] <- venues4$address$line1)
   ifelse(is.null(venues4$url),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"url"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"url"] <- venues4$url)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"url"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"url"] <- venues4$url)
   ifelse(is.null(venues4$location$longitude),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"longitude"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"longitude"] <- venues4$location$longitude)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"longitude"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"longitude"] <- venues4$location$longitude)
   ifelse(is.null(venues4$location$latitude),
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"latitude"] <- NA,
-         venue_data4[((i - 1) * 20 + 1):(i * 20),"latitude"] <- venues4$location$latitude)
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"latitude"] <- NA,
+         venue_data4[(i * 20 + 1):((i + 1) * 20),"latitude"] <- venues4$location$latitude)
   Sys.sleep(0.2)
-}
+  }
 ```
 
 
