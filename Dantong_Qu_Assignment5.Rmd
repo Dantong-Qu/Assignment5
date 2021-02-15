@@ -36,8 +36,20 @@ library(ggrepel)
 
 ### 1. Setting up a new GitHub repository
 ```{r echo=TRUE, message=FALSE}
-# https://github.com/Dantong-Qu/Assignment-5.git
+# https://github.com/Dantong-Qu/Assignment5.git
 ```
+
+### 2. Getting to know the API
+```{r echo=TRUE, message=FALSE}
+# Familiarize yourself with the features and functionalities of the Ticketmaster Discovery API. 
+# Have a particular look at rate limits.
+
+# All API keys are issued with a default quota of 5000 API calls per day and rate limitation of 5 requests per second. 
+
+source("API_key.R")
+```
+
+
 
 
 
