@@ -33,3 +33,10 @@ library(dplyr)
 library(directlabels)
 library(ggrepel)
 ```
+
+### 1. Setting up a new GitHub repository
+```{r echo=TRUE, message=FALSE}
+# https://github.com/Dantong-Qu/Assignment-5.git
+```
+
+
